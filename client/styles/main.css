@@ -1,0 +1,33 @@
+body{
+    
+    border: 1px black dashed;
+}
+
+header{
+    border: 3px red dotted;
+}
+
+main{
+    margin: 1rem;
+    border: 3px green dotted;
+}
+
+footer{
+    border: double;
+    padding: 0.75rem 1.5rem;
+    margin: 5px 8px;
+    background-color: #f1efe9;
+    display: grid;
+    grid-template-columns: auto auto;
+}
+
+footer a{
+    color: #140083;
+    text-decoration: none;
+    font-size: 1rem;
+}
+
+footer a:hover{
+    color: #1d00be;
+    font-weight: bold;
+}
