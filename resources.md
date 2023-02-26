@@ -23,6 +23,6 @@
 * [Google Fonts](https://fonts.google.com/)
     * [Roboto](https://fonts.google.com/specimen/Roboto)
     * [Montserrat](https://fonts.google.com/specimen/Montserrat)
-    * [Noto Sans](Uhttps://fonts.google.com/noto/specimen/Noto+SansRL)
+    * [Noto Sans](https://fonts.google.com/noto/specimen/Noto+Sans)
     * [Source Sans Pro](https://fonts.google.com/specimen/Source+Sans+Pro)
     * [Ubuntu](https://fonts.google.com/specimen/Ubuntu)
