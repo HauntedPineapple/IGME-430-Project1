@@ -55,7 +55,7 @@ const handlePost = (request, response, parsedUrl) => {
   // handle GET requests
   const handleGet = (request, response, parsedUrl) => {
     // route to correct method based on url
-    if (parsedUrl.pathname === '/style.css') {
+    if (parsedUrl.pathname === '/styles/main.css') {
       htmlHandler.getCSS(request, response);
     } else if (parsedUrl.pathname === '/getTeams') {
       jsonHandler.getUsers(request, response);

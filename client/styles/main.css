@@ -5,6 +5,11 @@ body{
 
 header{
     border: 3px red dotted;
+    
+}
+
+h1{
+    margin: 12px;
 }
 
 main{
@@ -15,8 +20,8 @@ main{
 footer{
     border: double;
     padding: 0.75rem 1.5rem;
-    margin: 5px 8px;
-    background-color: #f1efe9;
+    margin-top: 0.25rem;
+    background-color: #f4f3f3;
     display: grid;
     grid-template-columns: auto auto;
 }
