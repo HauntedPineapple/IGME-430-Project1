@@ -1,23 +1,60 @@
-body{
-    
-    border: 1px black dashed;
+main{
+    font-size: 1.15rem;
 }
 
-header{
-    border: 3px red dotted;
-    
+#inputForm{
+}
+#teamInput {
+    border: #9384ea6d dashed;
+    display: grid;
+    place-items: center;
+    justify-content: center;
+    align-content: center;
+    grid-auto-flow: column;
+    grid-template-rows: repeat(2, auto);
+    grid-template-columns: repeat(3, auto);
+    column-gap: 1.25rem;
+    row-gap: 1.5rem;
+    grid-template-areas:
+        "first second"
+        "third fourth"
+        "fifth sixth";
 }
 
-h1{
+.first {
+    grid-area: "first";
+}
+
+.second {
+    grid-area: "second";
+}
+
+.third {
+    grid-area: "third";
+}
+
+.fourth {
+    grid-area: "fourth";
+}
+
+.fifth {
+    grid-area: "fifth";
+}
+
+.sixth {
+    grid-area: "sixth";
+}
+
+h1 {
     margin: 12px;
 }
 
-main{
+
+main {
     margin: 1rem;
-    border: 3px green dotted;
 }
 
-footer{
+footer {
     border: double;
     padding: 0.75rem 1.5rem;
     margin-top: 0.25rem;
@@ -26,13 +63,13 @@ footer{
     grid-template-columns: auto auto;
 }
 
-footer a{
+footer a {
     color: #140083;
     text-decoration: none;
     font-size: 1rem;
 }
 
-footer a:hover{
+footer a:hover {
     color: #1d00be;
     font-weight: bold;
 }
