@@ -8,7 +8,10 @@
     <link rel="stylesheet" type="text/css" href="./styles/main.css">
 
     <script>
-
+         const init = () => {}
+         const sendFetchRequest = async (userForm) => {}
+         const handleResponse = async (response, parsedResponse) => {}
+         window.onload = init;
     </script>
 </head>
 
@@ -18,7 +21,7 @@
     </header>
 
     <main>
-        <section id="content">
+        <section id="inputForm">
             <div id="teamInput">
                 <span id="first">
                     <label for="firstMember">Pokemon name:</label>
@@ -45,9 +48,11 @@
                     <input type="text" id="sixthMember">
                 </span>
             </div>
-            <div id="inputForm">
+            <select id='methodSelect'>
+                <option value='get'>GET</option>
+                <option value='head'>HEAD</option>
+              </select>
                 <button>Add Team</button>
-            </div>
         </section>
 
         <div id="output"></div>
