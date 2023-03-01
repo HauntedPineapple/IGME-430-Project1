@@ -30,12 +30,8 @@ const parseBody = (request, response, handler) => {
       body.push(chunk);
     });
   
-    // The final event is when the request is finished sending and we have recieved
-    // all of the information. When the request "ends", we can proceed. Turn the body
-    // array into a single entity using Buffer.concat, then turn that into a string.
-    // With that string, we can use the querystring library to turn it into an object
-    // stored in bodyParams. We can do this because we know that the client sends
-    // us data in X-WWW-FORM-URLENCODED format. If it was in JSON we could use JSON.parse.
+    // Turn the body array into a single entity using Buffer.concat, 
+    // then turn that into a string, then parse it as JSON
     request.on('end', () => {
       const bodyString = Buffer.concat(body).toString();
       const bodyParams = JSON.parse(bodyString);

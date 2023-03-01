@@ -1,7 +1,3 @@
-// Note this object is purely in memory
-// When node shuts down this will be cleared.
-// Same when your heroku app shuts down from inactivity
-// We will be working with databases in the next few weeks.
 const teams = {};
 
 // function to respond with a json object
@@ -19,11 +15,12 @@ const respondJSONMeta = (request, response, status) => {
     response.end();
 };
 
+// return single team object as JSON
 const getTeam = (request, response) => {
  notImplemented(request, response);
 }
 
-// return team object as JSON
+// return teams object as JSON
 const getTeams = (request, response) => {
     respondJSON(request, response, 200, { teams });
 };
@@ -34,15 +31,12 @@ const addTeam = (request, response, body) => {
     const responseJSON = { message: 'Team name and Pokemon are required.' };
 
     // Check to make sure we have both fields
-    // We might want more validation than just checking if they exist
-    // This could easily be abused with invalid types (such as booleans, numbers, etc)
-    // If either are missing, send back an error message as a 400 badRequest
     if (!body.name || !body.pokemon) {
         responseJSON.id = 'missingParams';
         return respondJSON(request, response, 400, responseJSON);
     }
 
-    let responseCode = 204; // default status code to 204 updated
+    let responseCode = 222; // default status code to updated
 
     // If the team doesn't exist yet
     if (!teams[body.name]) {
@@ -59,14 +53,14 @@ const addTeam = (request, response, body) => {
     // if response is created, then set our created message
     // and sent response with a message
     if (responseCode === 201) {
-        responseJSON.message = 'Created Successfully';
-        return respondJSON(request, response, responseCode, responseJSON);
+        responseJSON.message = `"${body.name}" Created Successfully`;
     }
-
-    // 204 has an empty payload, just a success
-    // It cannot have a body, so we just send a 204 without a message
-    // 204 will not alter the browser in any way!!!
-    return respondJSONMeta(request, response, responseCode);
+    else{
+        responseJSON.message = `"${body.name}" Updated Successfully`;
+    }
+    
+    return respondJSON(request, response, responseCode, responseJSON);
+    
 };
 
 const success = (request, response, params) => {
