@@ -1,22 +1,28 @@
 /**
- * @typedef {number[]} baseStatArray  hp, attack, defense, special-attack, special-defense, speed
+ * @typedef {Object} BaseStats
+ * @property {number} hp 
+ * @property {number} speed
+ * @property {number} attack
+ * @property {number} special_attack
+ * @property {number} defense
+ * @property {number} special_defense
  *
- * @typedef {Object} pokemonObject
+ * @typedef {Object} PokemonObject
  * @property {number} id
  * @property {string} name
  * @property {string[]} types
- * @property {number[]} baseStatArray  hp, attack, defense, special-attack, special-defense, speed
+ * @property {BaseStats} baseStatArray
  * @property {string} apiURL - PokeAPI url
  * @property {string} spriteURL - sprite url
  * 
- * @typedef {Object} basicPokemonObject
- * @property {number} id
- * @property {string} name
- * 
- * @typedef {Object} teamData
+ * @typedef {Object} TeamObj
  * @property {string} name
  * @property {number} size
- * @property {basicPokemonObject[]} pokemon
+ * @property {PokemonObject[]} pokemon
+ * 
+ * @typedef {Object} BasicPokemonObject
+ * @property {number} id
+ * @property {string} name
  */
 
 let basicPokemonObj = {
@@ -28,10 +34,16 @@ let pokemonObj = {
     id: 0,
     name: '',
     types: [''],
-    baseStatArray: { hp: 0, speed: 0, attack: 0, special_attack: 0, defense: 0, special_defense: 0 },
+    baseStats: { hp: 0, speed: 0, attack: 0, special_attack: 0, defense: 0, special_defense: 0 },
     apiURL: '',
     spriteURL: ''
 }
+
+let teamObj = {
+    name: '',
+    pokemon: [],
+    size: 0
+};
 
 //let url = "https://pokeapi.co/api/v2/pokemon/?offset=0&limit=809"; //removes variants
 
@@ -187,8 +199,7 @@ const loadJsonFetch = (url, callback) => {
 };
 
 // Get output from PokeAPI and
-export function createOutput(pokemonArray)
-{
+export function createOutput(pokemonArray) {
     // Populate cards with data
     card.dataset.name = json["name"].toUpperCase() ?? "???";
     //card.dataset.name = pokemonArray[counter]["name"].toUpperCase() ?? "???";

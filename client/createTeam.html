@@ -102,7 +102,7 @@
                     id: 0,
                     name: '',
                     types: [''],
-                    baseStatArray: { hp: 0, speed: 0, attack: 0, special_attack: 0, defense: 0, special_defense: 0 },
+                    baseStats: { hp: 0, speed: 0, attack: 0, special_attack: 0, defense: 0, special_defense: 0 },
                     apiURL: '',
                     spriteURL: ''
                 };
@@ -122,12 +122,12 @@
                     if (json["types"].length == 2)
                         pokemonObj.types.push(json["types"][1]["type"]["name"]);
 
-                    pokemonObj.baseStatArray.hp = json["stats"][0]["base_stat"] ?? -1;
-                    pokemonObj.baseStatArray.speed = json["stats"][5]["base_stat"] ?? -1;
-                    pokemonObj.baseStatArray.attack = json["stats"][1]["base_stat"] ?? -1;
-                    pokemonObj.baseStatArray.special_attack = json["stats"][3]["base_stat"] ?? -1;
-                    pokemonObj.baseStatArray.defense = json["stats"][2]["base_stat"] ?? -1;
-                    pokemonObj.baseStatArray.special_defense = json["stats"][4]["base_stat"] ?? -1;
+                    pokemonObj.baseStats.hp = json["stats"][0]["base_stat"] ?? -1;
+                    pokemonObj.baseStats.speed = json["stats"][5]["base_stat"] ?? -1;
+                    pokemonObj.baseStats.attack = json["stats"][1]["base_stat"] ?? -1;
+                    pokemonObj.baseStats.special_attack = json["stats"][3]["base_stat"] ?? -1;
+                    pokemonObj.baseStats.defense = json["stats"][2]["base_stat"] ?? -1;
+                    pokemonObj.baseStats.special_defense = json["stats"][4]["base_stat"] ?? -1;
                 });
 
                 teamData.pokemon.push(pokemonObj);
