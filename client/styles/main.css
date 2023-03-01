@@ -1,64 +1,66 @@
-main{
-    font-size: 1.15rem;
+table,
+th,
+td {
+    border-collapse: collapse;
+    border: 1px solid;
+}
+#teamInputTable{padding: 0 1rem 0 1rem;}
+#teamInputTable table {
+    margin-top: 10px;
+    background-color: #f7ccb5;
+    
 }
 
-#teamInput {
-    border: #9384ea6d dashed;
-    display: grid;
-    place-items: center;
-    justify-content: center;
-    align-content: center;
-    grid-auto-flow: column;
-    grid-template-rows: repeat(2, auto);
-    grid-template-columns: repeat(3, auto);
-    column-gap: 1.25rem;
-    row-gap: 1.5rem;
-    grid-template-areas:
-        "first second"
-        "third fourth"
-        "fifth sixth";
+#teamInputTable th {
+    background-color: #fbbe9d;
 }
 
-.first {
-    grid-area: "first";
+#teamInputTable td {
+    padding: 1rem 1rem;
 }
 
-.second {
-    grid-area: "second";
+body {
+    background-color: #f9dbbd;
+    font-family: 'Roboto', 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
 }
 
-.third {
-    grid-area: "third";
-}
-
-.fourth {
-    grid-area: "fourth";
-}
-
-.fifth {
-    grid-area: "fifth";
-}
-
-.sixth {
-    grid-area: "sixth";
+header {
+    background-color: #fca17d;
+    border: #140083 double;
+    text-align: center;
+    margin: auto;
 }
 
 h1 {
-    margin: 12px;
+    margin: 10px;
+    font-family: 'Montserrat', 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
 }
 
 
 main {
     margin: 1rem;
+    font-family: 'Source Sans Pro', 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+    font-size: 1.15rem;
 }
 
 footer {
     border: double;
-    padding: 0.75rem 1.5rem;
+    padding: 0.75rem 1rem;
     margin-top: 0.25rem;
-    background-color: #f4f3f3;
+    background-color: #fca17d81;
     display: grid;
     grid-template-columns: auto auto;
+    grid-template-areas:
+        "one two"
+}
+
+#footerColOne{
+    grid-area: "one";
+    justify-self: start;
+}
+#footerColTwo{
+    grid-area: "two";
+    justify-self: end;
 }
 
 footer a {

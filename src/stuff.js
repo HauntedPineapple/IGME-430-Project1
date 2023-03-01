@@ -1,3 +1,31 @@
+/**
+ * @typedef {number[]} baseStatArray  hp, attack, defense, special-attack, special-defense, speed
+ *
+ * @typedef {Object} pokemonObject
+ * @property {number} id
+ * @property {string} name
+ * @property {string} url - PokeAPI url
+ * @property {string} sprite - sprite url
+ * @property {string[]} types
+ * @property {number[]} baseStatArray  hp, attack, defense, special-attack, special-defense, speed
+ * 
+ * @typedef {Object} basicPokemonObject
+ * @property {number} id
+ * @property {string} name
+ * @property {string} url - PokeAPI url
+ * 
+ * @typedef {basicPokemonObject[]} pokemonArray
+ */
+
+let pokemonObj = {
+    id: 0,
+    name: '',
+    apiURL: '',
+    spriteURL: '',
+    types: [''],
+    baseStatArray: [0, 0, 0, 0, 0, 0]
+}
+
 //let url = "https://pokeapi.co/api/v2/pokemon/?offset=0&limit=809"; //removes variants
 
 utility.loadJsonFetch(url, json => {
