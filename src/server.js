@@ -38,7 +38,7 @@ const parseBody = (request, response, handler) => {
     // us data in X-WWW-FORM-URLENCODED format. If it was in JSON we could use JSON.parse.
     request.on('end', () => {
       const bodyString = Buffer.concat(body).toString();
-      const bodyParams = query.parse(bodyString);
+      const bodyParams = JSON.parse(bodyString);
   
       // Once we have the bodyParams object, we will call the handler function. We then
       // proceed much like we would with a GET request.
@@ -61,6 +61,8 @@ const handlePost = (request, response, parsedUrl) => {
       jsonHandler.getTeams(request, response);
     } else if (parsedUrl.pathname === '/getTeam') {
       jsonHandler.getTeam(request, response);
+    } else if (parsedUrl.pathname === '/data/pokemon-basic-data.json') {
+      responseHandler.getBasicData(request, response);
     } else if (parsedUrl.pathname === '/') {
       htmlHandler.getIndex(request, response);
     } else {

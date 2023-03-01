@@ -1,6 +1,6 @@
 const fs = require('fs'); // pull in the file system module
 
-const index = fs.readFileSync(`${__dirname}/../client/index.html`);
+const index = fs.readFileSync(`${__dirname}/../client/createTeam.html`);
 const css = fs.readFileSync(`${__dirname}/../client/styles/main.css`);
 
 const getIndex = (request, response) => {
