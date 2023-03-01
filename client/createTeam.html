@@ -64,9 +64,22 @@
 
                     let teamData = createTeamData(teamNameInput.value, chosenPokemon);
                     console.log(teamData);
-                    const encodedTeamData=`name=${teamData.name}&size=${teamData.size}&pokemon=${teamData.pokemon}`;
-                    console.log(encodedTeamData);
-                    // TODO: add actual team creation
+
+
+                    /**
+                     * TODO:
+                     * Promise.all
+                     * You'll need an array of promises
+                     * createTeamData then needs to return a promise
+                     * - (either async/await or using .then)
+                     * - here, you'd wait for `createTeamData()` to resolve, then
+                     *   fetch /addTeam
+                     **/
+
+                    fetch("/addTeam", {
+                        method:'post',
+                        headers: {"Content-Type": "application/json",},
+                        body: JSON.stringify(teamData)});
                 });
 
 
@@ -97,6 +110,12 @@
                 pokemonObj.name = pokemon.name;
                 pokemonObj.apiURL = `https://pokeapi.co/api/v2/pokemon/${pokemon.id}/`;
                 pokemonObj.spriteURL = `https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/${pokemon.id}.png`;
+
+                fetch(pokemonObj.apiURL).then(res => {
+                    return res.json();
+                }).then(json => {
+                    
+                })
 
                 loadJsonFetch(pokemonObj.apiURL, json => {
                     pokemonObj.types = [json["types"][0]["type"]["name"]];
@@ -250,7 +269,7 @@
             <!-- <a href="https://people.rit.edu/aam6039/430/">IGME-430</a> -->
         </div>
         <div id="footerColTwo">
-            <a href="https://www.linkedin.com/in/audrey-main/">© Audrey Main</a>
+            <a href="https://www.linkedin.com/in/audrey-main/"> Audrey Main</a>
         </div>
     </footer>
 </body>
