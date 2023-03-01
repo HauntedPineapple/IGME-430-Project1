@@ -3,20 +3,24 @@ th,
 td {
     border-collapse: collapse;
     border: 1px solid;
-}
-#teamInputTable{padding: 0 1rem 0 1rem;}
-#teamInputTable table {
-    margin-top: 10px;
     background-color: #f7ccb5;
-    
 }
 
-#teamInputTable th {
+table {
+    margin-top: 10px;
+}
+
+th {
     background-color: #fbbe9d;
+    padding: 0.25rem 1rem;
 }
 
-#teamInputTable td {
-    padding: 1rem 1rem;
+td {
+    padding: 0.5rem 0.5rem;
+}
+
+#teamInputTable {
+    padding: 0 1rem 0 1rem;
 }
 
 body {
@@ -54,11 +58,12 @@ footer {
         "one two"
 }
 
-#footerColOne{
+#footerColOne {
     grid-area: "one";
     justify-self: start;
 }
-#footerColTwo{
+
+#footerColTwo {
     grid-area: "two";
     justify-self: end;
 }
