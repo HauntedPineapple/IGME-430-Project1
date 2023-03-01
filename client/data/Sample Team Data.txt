@@ -1,0 +1,79 @@
+{teamName: 'Main', pokemon: Array(6), size: 6}
+
+0: 
+name: "Mimikyu"
+id: 778
+types: (2) ['ghost', 'fairy']
+baseStatArray: {hp: 55, speed: 96, attack: 90, special_attack: 50, defense: 80, special_defense: 105}
+apiURL: "https://pokeapi.co/api/v2/pokemon/778/"
+spriteURL: "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/778.png"
+
+
+1: 
+name: "Typhlosion"
+id: 157
+types: ['fire']
+baseStatArray: {hp: 78, speed: 100, attack: 84, special_attack: 109, defense: 78, special_defense: 85}
+apiURL: "https://pokeapi.co/api/v2/pokemon/157/"
+spriteURL: "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/157.png"
+
+2: 
+id: 462
+name: "Magnezone"
+types: (2) ['electric', 'steel']
+baseStatArray: {hp: 70, speed: 60, attack: 70, special_attack: 130, defense: 115, special_defense: 90}
+apiURL: "https://pokeapi.co/api/v2/pokemon/462/"
+spriteURL: "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/462.png"
+
+3: 
+name: "Honchkrow"
+id: 430
+types: (2) ['dark', 'flying']
+baseStatArray: {hp: 100, speed: 71, attack: 125, special_attack: 105, defense: 52, special_defense: 52}
+apiURL: "https://pokeapi.co/api/v2/pokemon/430/"
+spriteURL: "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/430.png"
+
+4: 
+name: "Scolipede"
+id: 545
+types: (2) ['bug', 'poison']
+baseStatArray: {hp: 60, speed: 112, attack: 100, special_attack: 55, defense: 89, special_defense: 69}
+apiURL: "https://pokeapi.co/api/v2/pokemon/545/"
+spriteURL: "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/545.png"
+
+5: 
+name: "Gyarados"
+id: 130
+types: (2) ['water', 'flying']
+baseStatArray: {hp: 95, speed: 81, attack: 125, special_attack: 60, defense: 79, special_defense: 100}
+apiURL: "https://pokeapi.co/api/v2/pokemon/130/"
+spriteURL: "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/130.png"
+
+=================================================================================================================================
+{teamName: '3v3 Comp', pokemon: Array(3), size: 3}
+
+0: 
+name: "Empoleon"
+id: 395
+types: (2) ['water', 'steel']
+baseStatArray: {hp: 84, speed: 60, attack: 86, special_attack: 111, defense: 88, special_defense: 101}
+apiURL: "https://pokeapi.co/api/v2/pokemon/395/"
+spriteURL: "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/395.png"
+
+1: 
+name: "Torterra"
+id: 389
+types: (2) ['grass', 'ground']
+baseStatArray: {hp: 95, speed: 56, attack: 109, special_attack: 75, defense: 105, special_defense: 85}
+apiURL: "https://pokeapi.co/api/v2/pokemon/389/"
+spriteURL: "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/389.png"
+
+2: 
+name: "Infernape"
+id: 392
+types: (2) ['fire', 'fighting']
+baseStatArray: {hp: 76, speed: 108, attack: 104, special_attack: 104, defense: 71, special_defense: 71}
+apiURL: "https://pokeapi.co/api/v2/pokemon/392/"
+spriteURL: "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/392.png"
+
+=================================================================================================================================
