@@ -4,34 +4,37 @@
  * @typedef {Object} pokemonObject
  * @property {number} id
  * @property {string} name
- * @property {string} url - PokeAPI url
- * @property {string} sprite - sprite url
  * @property {string[]} types
  * @property {number[]} baseStatArray  hp, attack, defense, special-attack, special-defense, speed
+ * @property {string} apiURL - PokeAPI url
+ * @property {string} spriteURL - sprite url
  * 
  * @typedef {Object} basicPokemonObject
  * @property {number} id
  * @property {string} name
- * @property {string} url - PokeAPI url
  * 
- * @typedef {basicPokemonObject[]} pokemonArray
+ * @typedef {Object} teamData
+ * @property {string} name
+ * @property {number} size
+ * @property {basicPokemonObject[]} pokemon
  */
+
+let basicPokemonObj = {
+    id: 0,
+    name: ''
+}
 
 let pokemonObj = {
     id: 0,
     name: '',
-    apiURL: '',
-    spriteURL: '',
     types: [''],
-    baseStatArray: [0, 0, 0, 0, 0, 0]
+    baseStatArray: { hp: 0, speed: 0, attack: 0, special_attack: 0, defense: 0, special_defense: 0 },
+    apiURL: '',
+    spriteURL: ''
 }
 
 //let url = "https://pokeapi.co/api/v2/pokemon/?offset=0&limit=809"; //removes variants
 
-utility.loadJsonFetch(url, json => {
-    console.log(json);
-    resultsArray = [...json];
-});
 
 async function getResults() {
     document.querySelector("#sort-order").onchange = getResults;

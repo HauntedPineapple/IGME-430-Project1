@@ -3,8 +3,6 @@
 
 <head>
     <title>Project 1</title>
-    <link rel="icon" type="image/png" href="./assets/favicon-16x16.png" sizes="16x16" />
-    <link rel="icon" type="image/png" href="./assets/favicon-32x32.png" sizes="32x32" />
     <link rel="stylesheet" type="text/css" href="./styles/main.css">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -23,9 +21,96 @@
                 }).catch(error => { console.log(error); });
         };
 
-        const init = () => { }
-        const sendFetchRequest = async (userForm) => { }
+        const init = () => {
+            loadJsonFetch("data/pokemon-basic-data.json", pokemonDataJSON => {
+                // populate dropdown with pokemon names
+                let pokemonDropdowns = document.querySelectorAll('.pokemonNamesDropdown');
+                pokemonDropdowns.forEach(dropdown => {
+                    pokemonDataJSON.forEach(pokemon => {
+                        let option = document.createElement('option');
+                        option.text = option.value = pokemon.name;
+                        // option.setAttribute("idNum", pokemon.id);
+                        dropdown.appendChild(option);
+                    });
+                });
+
+                let statusOutput = document.querySelector("#statusOutput");
+                let teamNameInput = document.querySelector("#teamnameInput");
+
+                document.querySelector('#createTeamButton').addEventListener("click", (e) => {
+                    e.preventDefault();
+                    if (teamNameInput.value === '') {
+                        statusOutput.innerHTML = "<b>ERROR</b>: You need a team name!";
+                        return;
+                    }
+                    if (teamNameInput.value === ' ') {
+                        // TODO: check if the team name exists
+                        statusOutput.innerHTML = "<b>ERROR</b>: This team name is already being used!";
+                        return;
+                    }
+
+                    let chosenPokemon = []; // Get inputs
+                    document.querySelectorAll('.addPokemonDropdown').forEach(dropdown => {
+                        if (dropdown.value !== '') {
+                            let result = pokemonDataJSON.find(obj => obj.name === dropdown.value);
+                            chosenPokemon.push(result);
+                        }
+                    });
+
+                    if(chosenPokemon.length === 0){
+                        statusOutput.innerHTML = "<b>ERROR</b>: You need Pokemon!";
+                        return;
+                    }
+
+                    let teamData = createTeamData(teamNameInput.value, chosenPokemon);
+                    console.log(teamData);
+                    // TODO: add actual team creation
+                });
+            }); // end of init()
+        }
+
+        const createTeamData = (teamname, chosenPokemon) => {
+            let teamData = {
+                teamName: teamname,
+                pokemon:[],
+                size:chosenPokemon.length
+            };
+
+            chosenPokemon.forEach(pokemon => {
+                let pokemonObj = {
+                    id: 0,
+                    name: '',
+                    types: [''],
+                    baseStatArray: { hp: 0, speed: 0, attack: 0, special_attack: 0, defense: 0, special_defense: 0 },
+                    apiURL: '',
+                    spriteURL: ''
+                };
+                pokemonObj.id = pokemon.id;
+                pokemonObj.name = pokemon.name;
+                pokemonObj.apiURL = `https://pokeapi.co/api/v2/pokemon/${pokemon.id}/`;
+                pokemonObj.spriteURL = `https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/${pokemon.id}.png`;
+
+                loadJsonFetch(pokemonObj.apiURL, json => {
+                    pokemonObj.types = [json["types"][0]["type"]["name"]];
+                    if (json["types"].length == 2)
+                        pokemonObj.types.push(json["types"][1]["type"]["name"]);
+
+                    pokemonObj.baseStatArray.hp = json["stats"][0]["base_stat"] ?? -1;
+                    pokemonObj.baseStatArray.speed = json["stats"][5]["base_stat"] ?? -1;
+                    pokemonObj.baseStatArray.attack = json["stats"][1]["base_stat"] ?? -1;
+                    pokemonObj.baseStatArray.special_attack = json["stats"][3]["base_stat"] ?? -1;
+                    pokemonObj.baseStatArray.defense = json["stats"][2]["base_stat"] ?? -1;
+                    pokemonObj.baseStatArray.special_defense = json["stats"][4]["base_stat"] ?? -1;
+                });
+
+                teamData.pokemon.push(pokemonObj);
+            });
+            return teamData;
+        };
+
+        const sendFetchRequest = async (e) => { }
         const handleResponse = async (response, parsedResponse) => { }
+
         window.onload = init;
     </script>
 </head>
@@ -36,10 +121,111 @@
     </header>
 
     <main>
-        Lorem ipsum dolor sit amet consectetur adipisicing elit. Ut debitis vitae, necessitatibus, mollitia beatae ipsum
-        repellat enim, tempora obcaecati in molestias odit? Debitis, deserunt aliquam sapiente reiciendis suscipit vitae
-        dignissimos provident possimus exercitationem ducimus odio fuga quos hic nemo impedit repellendus officia
-        aspernatur iure at adipisci voluptate temporibus mollitia. Obcaecati.
+        <div id="teamInput">
+            <label for="teamname">Team Name:</label>
+            <input type="text" id="teamnameInput" name="teamname">
+
+            <button id="createTeamButton">Create Team!</button>
+            
+
+            <div id="statusOutput"></div>
+
+            <div id="teamInputTable">
+                <table>
+                    <tr>
+                        <th></th>
+                        <th>Pokemon</th>
+                        <!-- <th>Type</th> -->
+                        <!-- <th>Options</th> -->
+                    </tr>
+
+                    <tr id="firstPokemon">
+                        <td class="inputTeamPlace">1</td>
+                        <td class="inputPokemonName">
+                            <form class="addPokemonForm">
+                                <input list="firstPokemonName" name="addPokemonDropdown" class="addPokemonDropdown">
+                                <datalist name="addPokemon" id="firstPokemonName" class="pokemonNamesDropdown">
+                                    <option value="none">
+                                </datalist>
+                                <!-- <button>Add Pokemon</button> -->
+                            </form>
+                        </td>
+                        <!-- <td class="inputPokemonType"></td> -->
+                        <!-- <td class="inputPokemonOptions"></td> -->
+                    </tr>
+
+                    <tr id="secondPokemon">
+                        <td class="inputTeamPlace">2</td>
+                        <td class="inputPokemonName">
+                            <form class="addPokemonForm">
+                                <input list="secondPokemonName" name="addPokemonDropdown" class="addPokemonDropdown">
+                                <datalist name="addPokemon" id="secondPokemonName" class="pokemonNamesDropdown">
+                                    <option value="none">
+                                </datalist>
+                            </form>
+                        </td>
+                        <!-- <td class="inputPokemonType"></td> -->
+                        <!-- <td class="inputPokemonOptions"></td> -->
+                    </tr>
+
+                    <tr id="thirdPokemon">
+                        <td class="inputTeamPlace">3</td>
+                        <td class="inputPokemonName">
+                            <form class="addPokemonForm">
+                                <input list="thirdPokemonName" name="addPokemonDropdown" class="addPokemonDropdown">
+                                <datalist name="addPokemon" id="thirdPokemonName" class="pokemonNamesDropdown">
+                                    <option value="none">
+                                </datalist>
+                            </form>
+                        </td>
+                        <!-- <td class="inputPokemonType"></td> -->
+                        <!-- <td class="inputPokemonOptions"></td> -->
+                    </tr>
+
+                    <tr id="fourthPokemon">
+                        <td class="inputTeamPlace">4</td>
+                        <td class="inputPokemonName">
+                            <form class="addPokemonForm">
+                                <input list="fourthPokemonName" name="addPokemonDropdown" class="addPokemonDropdown">
+                                <datalist name="addPokemon" id="fourthPokemonName" class="pokemonNamesDropdown">
+                                    <option value="none">
+                                </datalist>
+                            </form>
+                        </td>
+                        <!-- <td class="inputPokemonType"></td> -->
+                        <!-- <td class="inputPokemonOptions"></td> -->
+                    </tr>
+
+                    <tr id="fifthPokemon">
+                        <td class="inputTeamPlace">5</td>
+                        <td class="inputPokemonName">
+                            <form class="addPokemonForm">
+                                <input list="fifthPokemonName" name="addPokemonDropdown" class="addPokemonDropdown">
+                                <datalist name="addPokemon" id="fifthPokemonName" class="pokemonNamesDropdown">
+                                    <option value="none">
+                                </datalist>
+                            </form>
+                        </td>
+                        <!-- <td class="inputPokemonType"></td> -->
+                        <!-- <td class="inputPokemonOptions"></td> -->
+                    </tr>
+
+                    <tr id="sixthPokemon">
+                        <td class="inputTeamPlace">6</td>
+                        <td class="inputPokemonName">
+                            <form class="addPokemonForm">
+                                <input list="sixthPokemonName" name="addPokemonDropdown" class="addPokemonDropdown">
+                                <datalist name="addPokemon" id="sixthPokemonName" class="pokemonNamesDropdown">
+                                    <option value="none">
+                                </datalist>
+                            </form>
+                        </td>
+                        <!-- <td class="inputPokemonType"></td> -->
+                        <!-- <td class="inputPokemonOptions"></td> -->
+                    </tr>
+                </table>
+            </div>
+        </div>
     </main>
 
     <footer>
