@@ -43,6 +43,11 @@
                         statusOutput.innerHTML = "<b>ERROR</b>: You need a team name!";
                         return;
                     }
+                    if (teamNameInput.value === ' ') {
+                        // TODO: check if the team name exists
+                        statusOutput.innerHTML = "<b>ERROR</b>: This team name is already being used!";
+                        return;
+                    }
 
                     let chosenPokemon = []; // Get inputs
                     document.querySelectorAll('.addPokemonDropdown').forEach(dropdown => {
@@ -59,14 +64,22 @@
 
                     let teamData = createTeamData(teamNameInput.value, chosenPokemon);
                     console.log(teamData);
+                    const encodedTeamData=`name=${teamData.name}&size=${teamData.size}&pokemon=${teamData.pokemon}`;
+                    console.log(encodedTeamData);
                     // TODO: add actual team creation
                 });
+
+
+                document.querySelector('#getTeamsButton').addEventListener("click", (e) => {
+                });
+
+
             }); // end of init()
         }
 
         const createTeamData = (teamname, chosenPokemon) => {
             let teamData = {
-                teamName: teamname,
+                name: teamname,
                 pokemon:[],
                 size:chosenPokemon.length
             };
@@ -75,10 +88,10 @@
                 let pokemonObj = {
                     id: 0,
                     name: '',
-                    apiURL: '',
-                    spriteURL: '',
                     types: [''],
-                    baseStatArray: { hp: 0, speed: 0, attack: 0, special_attack: 0, defense: 0, special_defense: 0 }
+                    baseStatArray: { hp: 0, speed: 0, attack: 0, special_attack: 0, defense: 0, special_defense: 0 },
+                    apiURL: '',
+                    spriteURL: ''
                 };
                 pokemonObj.id = pokemon.id;
                 pokemonObj.name = pokemon.name;
@@ -103,6 +116,17 @@
             return teamData;
         };
 
+        const sendTeamDataPost = async (teamData) => {
+            const action="/addTeam";
+            const method ="post";
+
+            //Build a data string in the FORM-URLENCODED format.
+            const encodedTeamData=`name=${teamData.name}&size=${teamData.size}&pokemon=${teamData.pokemon}`;
+        }
+
+        const sendFetchRequest = async (info) => { }
+        const handleResponse = async (response, parsedResponse) => { }
+
         window.onload = init;
     </script>
 </head>
@@ -118,6 +142,7 @@
             <input type="text" id="teamnameInput" name="teamname">
 
             <button id="createTeamButton">Create Team!</button>
+            <button id="getTeamsButton">Get Teams</button>
 
             <div id="statusOutput"></div>
 

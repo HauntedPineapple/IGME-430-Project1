@@ -58,7 +58,9 @@ const handlePost = (request, response, parsedUrl) => {
     if (parsedUrl.pathname === '/styles/main.css') {
       htmlHandler.getCSS(request, response);
     } else if (parsedUrl.pathname === '/getTeams') {
-      jsonHandler.getUsers(request, response);
+      jsonHandler.getTeams(request, response);
+    } else if (parsedUrl.pathname === '/getTeam') {
+      jsonHandler.getTeam(request, response);
     } else if (parsedUrl.pathname === '/') {
       htmlHandler.getIndex(request, response);
     } else {

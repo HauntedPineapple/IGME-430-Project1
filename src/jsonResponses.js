@@ -19,12 +19,16 @@ const respondJSONMeta = (request, response, status) => {
     response.end();
 };
 
-// return user object as JSON
+const getTeam = (request, response) => {
+ notImplemented(request, response);
+}
+
+// return team object as JSON
 const getTeams = (request, response) => {
-    respondJSON(request, response, 200, { users });
+    respondJSON(request, response, 200, { teams });
 };
 
-// function to add a user from a POST body
+// function to add a team from a POST body
 const addTeam = (request, response, body) => {
     // default json message
     const responseJSON = { message: 'Team name and Pokemon are required.' };
@@ -40,16 +44,17 @@ const addTeam = (request, response, body) => {
 
     let responseCode = 204; // default status code to 204 updated
 
-    // If the user doesn't exist yet
-    if (!users[body.name]) {
-        // Set the status code to 201 (created) and create an empty user
+    // If the team doesn't exist yet
+    if (!teams[body.name]) {
+        // Set the status code to 201 (created) and create an empty team
         responseCode = 201;
-        users[body.name] = {};
+        teams[body.name] = {};
     }
 
-    // add or update fields for this user name
-    users[body.name].name = body.name;
-    users[body.name].pokemon = body.pokemon;
+    // add or update fields for this team
+    teams[body.name].name = body.name;
+    teams[body.name].pokemon = body.pokemon;
+    teams[body.name].size = body.size;
 
     // if response is created, then set our created message
     // and sent response with a message
@@ -57,6 +62,7 @@ const addTeam = (request, response, body) => {
         responseJSON.message = 'Created Successfully';
         return respondJSON(request, response, responseCode, responseJSON);
     }
+
     // 204 has an empty payload, just a success
     // It cannot have a body, so we just send a 204 without a message
     // 204 will not alter the browser in any way!!!
@@ -81,7 +87,7 @@ const notFound = (request, response) => {
     respondJSON(request, response, 404, responseJSON);
 };
 
-const notImplemented = (request, response, params) => {
+const notImplemented = (request, response) => {
     const responseJSON = {
       status: 'Not Implemented',
       message: 'A get request for this page has not been implemented yet. Check again later for updated content.',
@@ -92,6 +98,7 @@ const notImplemented = (request, response, params) => {
 
 // public exports
 module.exports = {
+    getTeam,
     getTeams,
     addTeam,
     success,
