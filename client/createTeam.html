@@ -20,7 +20,7 @@
                     callback(json);
                 }).catch(error => { console.log(error); });
         };
-        
+
         const init = () => {
             loadJsonFetch("data/pokemon-basic-data.json", pokemonDataJSON => {
                 // populate dropdown with pokemon names
@@ -67,7 +67,8 @@
         const createTeamData = (teamname, chosenPokemon) => {
             let teamData = {
                 teamName: teamname,
-                pokemon:[]
+                pokemon:[],
+                size:chosenPokemon.length
             };
 
             chosenPokemon.forEach(pokemon => {
