@@ -21,6 +21,12 @@
                 }).catch(error => { console.log(error); });
         };
 
+        let teamData = {
+            name: "",
+            pokemon: [],
+            size: 0
+        };
+
         const init = () => {
             loadJsonFetch("data/pokemon-basic-data.json", pokemonDataJSON => {
                 // populate dropdown with pokemon names
@@ -62,9 +68,16 @@
                         return;
                     }
 
-                    let teamData = createTeamData(teamNameInput.value, chosenPokemon);
-                    console.log(teamData);
 
+                    Promise.all(setTeamData(teamNameInput.value, chosenPokemon)).then((values) => {
+                        sendTeamDataPost(teamData);
+                        // fetch("/addTeam", {
+                        //     method: 'post',
+                        //     headers: { "Content-Type": "application/json", },
+                        //     body: JSON.stringify(teamData)
+                        // });
+                        console.log(teamData);
+                    });
 
                     /**
                      * TODO:
@@ -76,11 +89,6 @@
                      *   fetch /addTeam
                      **/
 
-                    // fetch("/addTeam", {
-                    //     method: 'post',
-                    //     headers: { "Content-Type": "application/json", },
-                    //     body: JSON.stringify(teamData)
-                    // });
                 });
 
 
@@ -91,12 +99,10 @@
             }); // end of init()
         }
 
-        const createTeamData = (teamname, chosenPokemon) => {
-            let teamData = {
-                name: teamname,
-                pokemon: [],
-                size: chosenPokemon.length
-            };
+        const setTeamData = (teamname, chosenPokemon) => {
+            teamData.name = teamname;
+            teamData.size = chosenPokemon.size;
+            let promises = [];
 
             chosenPokemon.forEach(pokemon => {
                 let pokemonObj = {
@@ -112,13 +118,9 @@
                 pokemonObj.apiURL = `https://pokeapi.co/api/v2/pokemon/${pokemon.id}/`;
                 pokemonObj.spriteURL = `https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/${pokemon.id}.png`;
 
-                fetch(pokemonObj.apiURL).then(res => {
+                let promise = fetch(pokemonObj.apiURL).then(res => {
                     return res.json();
                 }).then(json => {
-
-                })
-
-                loadJsonFetch(pokemonObj.apiURL, json => {
                     pokemonObj.types = [json["types"][0]["type"]["name"]];
                     if (json["types"].length == 2)
                         pokemonObj.types.push(json["types"][1]["type"]["name"]);
@@ -129,18 +131,23 @@
                     pokemonObj.baseStats.special_attack = json["stats"][3]["base_stat"] ?? -1;
                     pokemonObj.baseStats.defense = json["stats"][2]["base_stat"] ?? -1;
                     pokemonObj.baseStats.special_defense = json["stats"][4]["base_stat"] ?? -1;
-                });
+                })
 
+                promises.push(promise);
                 teamData.pokemon.push(pokemonObj);
             });
-            return teamData;
+
+            return promises;
         };
 
         const sendTeamDataPost = async (teamData) => {
-            const action = "/addTeam";
-            const method = "post";
+            let response = await fetch("/addTeam", {
+                method: 'post',
+                headers: { "Content-Type": "application/json", },
+                body: JSON.stringify(teamData)
+            });
 
-
+            handleResponse(response, 'post');
         }
 
         const sendGetFetchRequest = async (url) => {
@@ -313,7 +320,7 @@
             </div>
         </div>
 
-        <div id="output">
+        <div id="responseOutput">
             <h4>Response Output</h4>
             <section id="#content"></section>
         </div>
