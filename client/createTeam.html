@@ -199,20 +199,19 @@
             <li><a href="./viewTeamsList.html">View Teams List</a></li>
             <li><a href="./viewTeam.html">View Team</a></li>
             <li><a href="./editTeam.html">Edit Team</a></li>
-          </ul>
+        </ul>
     </nav>
 
     <main>
         <div id="teamInput">
-            <label for="teamname">Team Name:</label>
-            <input type="text" id="teamnameInput" name="teamname">
-
-            <button id="createTeamButton">Create Team!</button>
-            <button id="getTeamsButton">Get Teams</button>
+            <div class="center">
+                <label for="teamname">Team Name:</label>
+                <input type="text" id="teamnameInput" name="teamname">
+            </div>
 
             <div id="statusOutput"></div>
 
-            <div id="teamInputTable">
+            <div class="center" id="teamInputTable">
                 <table>
                     <tr>
                         <th></th>
@@ -306,6 +305,11 @@
                         <!-- <td class="inputPokemonOptions"></td> -->
                     </tr>
                 </table>
+            </div>
+
+            <div class="center">
+                <button id="createTeamButton">Create Team!</button>
+                <button id="getTeamsButton">Get Teams</button>
             </div>
         </div>
 

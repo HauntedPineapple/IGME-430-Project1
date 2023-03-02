@@ -23,19 +23,19 @@
                 }).catch(error => { console.log(error); });
         };
 
-        
+
         const sendFetchRequest = async (userForm) => { }
         const handleResponse = async (response, parsedResponse) => { }
-        
+
 
         // <Test Content>
-            let testTeams = {
-                
-            };
+        let testTeams = {
+
+        };
         // </Test Content>
         const init = () => {
-            
-         }
+
+        }
 
         window.onload = init;
     </script>
@@ -52,32 +52,34 @@
             <li><a id="currentPage" href="./viewTeamsList.html">View Teams List</a></li>
             <li><a href="./viewTeam.html">View Team</a></li>
             <li><a href="./editTeam.html">Edit Team</a></li>
-          </ul>
+        </ul>
     </nav>
 
     <main>
-        <table id="teamListTable">
-            <tr>
-                <th>Team Name</th>
-                <th>Size</th>
-                <!-- <th>Options</th> -->
-            </tr>
-            <tr>
-                <td class="teamListEntryName">Pokemon</td>
-                <td class="teamListEntrySize">6</td>
-                <!-- <td>Options</td> -->
-            </tr>
-            <tr>
-                <td class="teamListEntryName">Pokemon</td>
-                <td class="teamListEntrySize">2</td>
-                <!-- <td>Options</td> -->
-            </tr>
-            <tr>
-                <td class="teamListEntryName">Pokemon</td>
-                <td class="teamListEntrySize">4</td>
-                <!-- <td>Options</td> -->
-            </tr>
-        </table>
+        <div class="center" id="teamListTable">
+            <table>
+                <tr>
+                    <th>Team Name</th>
+                    <th>Size</th>
+                    <!-- <th>Options</th> -->
+                </tr>
+                <tr>
+                    <td class="teamListEntryName">Pokemon</td>
+                    <td class="teamListEntrySize">6</td>
+                    <!-- <td>Options</td> -->
+                </tr>
+                <tr>
+                    <td class="teamListEntryName">Pokemon</td>
+                    <td class="teamListEntrySize">2</td>
+                    <!-- <td>Options</td> -->
+                </tr>
+                <tr>
+                    <td class="teamListEntryName">Pokemon</td>
+                    <td class="teamListEntrySize">4</td>
+                    <!-- <td>Options</td> -->
+                </tr>
+            </table>
+        </div>
     </main>
 
     <footer>

@@ -41,14 +41,104 @@
             <li><a href="./viewTeamsList.html">View Teams List</a></li>
             <li><a id="currentPage" href="./viewTeam.html">View Team</a></li>
             <li><a href="./editTeam.html">Edit Team</a></li>
-          </ul>
+        </ul>
     </nav>
 
     <main>
-        Lorem ipsum dolor sit amet consectetur adipisicing elit. Ut debitis vitae, necessitatibus, mollitia beatae ipsum
-        repellat enim, tempora obcaecati in molestias odit? Debitis, deserunt aliquam sapiente reiciendis suscipit vitae
-        dignissimos provident possimus exercitationem ducimus odio fuga quos hic nemo impedit repellendus officia
-        aspernatur iure at adipisci voluptate temporibus mollitia. Obcaecati.
+        <div class="center" id="viewTeamTable">
+            <table>
+                <tr>
+                    <th></th>
+                    <th>Pokemon</th>
+                    <th>Type</th>
+                    <th>Base Stats</th>
+                </tr>
+
+                <tr id="firstPokemon">
+                    <td class="pokemonSprite"></td>
+                    <td class="inputPokemonName">
+                        <form class="addPokemonForm">
+                            <input list="firstPokemonName" name="addPokemonDropdown" class="addPokemonDropdown">
+                            <datalist name="addPokemon" id="firstPokemonName" class="pokemonNamesDropdown">
+                                <option value="none">
+                            </datalist>
+                        </form>
+                    </td>
+                    <td class="pokemonType"></td>
+                    <td class="pokemonStats"></td>
+                </tr>
+
+                <tr id="secondPokemon">
+                    <td class="pokemonSprite"></td>
+                    <td class="inputPokemonName">
+                        <form class="addPokemonForm">
+                            <input list="secondPokemonName" name="addPokemonDropdown" class="addPokemonDropdown">
+                            <datalist name="addPokemon" id="secondPokemonName" class="pokemonNamesDropdown">
+                                <option value="none">
+                            </datalist>
+                        </form>
+                    </td>
+                    <td class="pokemonType"></td>
+                    <td class="pokemonStats"></td>
+                </tr>
+
+                <tr id="thirdPokemon">
+                    <td class="pokemonSprite"></td>
+                    <td class="inputPokemonName">
+                        <form class="addPokemonForm">
+                            <input list="thirdPokemonName" name="addPokemonDropdown" class="addPokemonDropdown">
+                            <datalist name="addPokemon" id="thirdPokemonName" class="pokemonNamesDropdown">
+                                <option value="none">
+                            </datalist>
+                        </form>
+                    </td>
+                    <td class="pokemonType"></td>
+                    <td class="pokemonStats"></td>
+                </tr>
+
+                <tr id="fourthPokemon">
+                    <td class="pokemonSprite"></td>
+                    <td class="inputPokemonName">
+                        <form class="addPokemonForm">
+                            <input list="fourthPokemonName" name="addPokemonDropdown" class="addPokemonDropdown">
+                            <datalist name="addPokemon" id="fourthPokemonName" class="pokemonNamesDropdown">
+                                <option value="none">
+                            </datalist>
+                        </form>
+                    </td>
+                    <td class="pokemonType"></td>
+                    <td class="pokemonStats"></td>
+                </tr>
+
+                <tr id="fifthPokemon">
+                    <td class="pokemonSprite"></td>
+                    <td class="inputPokemonName">
+                        <form class="addPokemonForm">
+                            <input list="fifthPokemonName" name="addPokemonDropdown" class="addPokemonDropdown">
+                            <datalist name="addPokemon" id="fifthPokemonName" class="pokemonNamesDropdown">
+                                <option value="none">
+                            </datalist>
+                        </form>
+                    </td>
+                    <td class="pokemonType"></td>
+                    <td class="pokemonStats"></td>
+                </tr>
+
+                <tr id="sixthPokemon">
+                    <td class="pokemonSprite"></td>
+                    <td class="inputPokemonName">
+                        <form class="addPokemonForm">
+                            <input list="sixthPokemonName" name="addPokemonDropdown" class="addPokemonDropdown">
+                            <datalist name="addPokemon" id="sixthPokemonName" class="pokemonNamesDropdown">
+                                <option value="none">
+                            </datalist>
+                        </form>
+                    </td>
+                    <td class="pokemonType"></td>
+                    <td class="pokemonStats"></td>
+                </tr>
+            </table>
+        </div>
     </main>
 
     <footer>
