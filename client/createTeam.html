@@ -68,7 +68,6 @@
                         return;
                     }
 
-
                     Promise.all(setTeamData(teamNameInput.value, chosenPokemon)).then((values) => {
                         sendTeamDataPost(teamData);
                         // fetch("/addTeam", {
@@ -78,17 +77,6 @@
                         // });
                         console.log(teamData);
                     });
-
-                    /**
-                     * TODO:
-                     * Promise.all
-                     * You'll need an array of promises
-                     * createTeamData then needs to return a promise
-                     * - (either async/await or using .then)
-                     * - here, you'd wait for `createTeamData()` to resolve, then
-                     *   fetch /addTeam
-                     **/
-
                 });
 
 
