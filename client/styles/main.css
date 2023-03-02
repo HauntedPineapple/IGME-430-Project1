@@ -1,38 +1,13 @@
-table,
-th,
-td {
-    border-collapse: collapse;
-    border: 1px solid;
-    background-color: #f7ccb5;
-}
-
-table {
-    margin-top: 10px;
-}
-
-th {
-    background-color: #fbbe9d;
-    padding: 0.25rem 1rem;
-}
-
-td {
-    padding: 0.5rem 0.5rem;
-}
-
-#teamInputTable {
-    padding: 0 1rem 0 1rem;
-}
-
 body {
     background-color: #f9dbbd;
     font-family: 'Roboto', 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
 }
 
 header {
-    background-color: #fca17d;
-    border: #140083 double;
+    background-color: #fca17d81;
+    border: #140083 solid;
     text-align: center;
-    margin: auto;
+
 }
 
 h1 {
@@ -68,13 +43,68 @@ footer {
     justify-self: end;
 }
 
-footer a {
+a {
     color: #140083;
     text-decoration: none;
     font-size: 1rem;
 }
 
-footer a:hover {
+a:hover {
     color: #1d00be;
     font-weight: bold;
+}
+
+
+.navbar {
+    display: flex;
+    flex-flow: row wrap;
+    justify-content: center;
+    justify-items: center;
+    list-style-type: none;
+    margin: 10px 5px 5px 5px;
+    padding: 0;
+    font-weight: bolder;
+}
+
+.navbar #currentPage {
+    pointer-events: none;
+    color: #eee9e3;
+    background-color: #541d5b;
+}
+
+.navbar a {
+    text-align: center;
+    padding: 0.25rem;
+    border-bottom: #140083 solid;
+    color: #541d5b;
+}
+
+.navbar a:hover {
+    color: #eee9e3;
+    background-color: #541d5b;
+}
+
+table,
+th,
+td {
+    border-collapse: collapse;
+    border: 1px solid;
+    background-color: #f7ccb5;
+}
+
+table {
+    margin-top: 10px;
+}
+
+th {
+    background-color: #fbbe9d;
+    padding: 0.25rem 1rem;
+}
+
+td {
+    padding: 0.5rem 0.5rem;
+}
+
+#teamInputTable {
+    padding: 0 1rem 0 1rem;
 }

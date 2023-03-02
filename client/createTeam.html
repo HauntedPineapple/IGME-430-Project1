@@ -76,11 +76,11 @@
                      *   fetch /addTeam
                      **/
 
-                    fetch("/addTeam", {
-                        method: 'post',
-                        headers: { "Content-Type": "application/json", },
-                        body: JSON.stringify(teamData)
-                    });
+                    // fetch("/addTeam", {
+                    //     method: 'post',
+                    //     headers: { "Content-Type": "application/json", },
+                    //     body: JSON.stringify(teamData)
+                    // });
                 });
 
 
@@ -192,6 +192,15 @@
     <header>
         <h1>Pokemon Team Builder</h1>
     </header>
+
+    <nav>
+        <ul class="navbar">
+            <li><a id="currentPage" href="./createTeam.html">Create Team</a></li>
+            <li><a href="./viewTeamsList.html">View Teams List</a></li>
+            <li><a href="./viewTeam.html">View Team</a></li>
+            <li><a href="./editTeam.html">Edit Team</a></li>
+          </ul>
+    </nav>
 
     <main>
         <div id="teamInput">

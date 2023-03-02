@@ -23,9 +23,20 @@
                 }).catch(error => { console.log(error); });
         };
 
-        const init = () => { }
+        
         const sendFetchRequest = async (userForm) => { }
         const handleResponse = async (response, parsedResponse) => { }
+        
+
+        // <Test Content>
+            let testTeams = {
+                
+            };
+        // </Test Content>
+        const init = () => {
+            
+         }
+
         window.onload = init;
     </script>
 </head>
@@ -34,6 +45,15 @@
     <header>
         <h1>Pokemon Team Builder</h1>
     </header>
+
+    <nav>
+        <ul class="navbar">
+            <li><a href="./createTeam.html">Create Team</a></li>
+            <li><a id="currentPage" href="./viewTeamsList.html">View Teams List</a></li>
+            <li><a href="./viewTeam.html">View Team</a></li>
+            <li><a href="./editTeam.html">Edit Team</a></li>
+          </ul>
+    </nav>
 
     <main>
         <table id="teamListTable">

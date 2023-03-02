@@ -53,6 +53,14 @@ const handlePost = (request, response, parsedUrl) => {
     // route to correct method based on url
     if (parsedUrl.pathname === '/styles/main.css') {
       htmlHandler.getCSS(request, response);
+    } else if (parsedUrl.pathname === '/createTeam.html') {
+      htmlHandler.getIndex(request, response);
+    } else if (parsedUrl.pathname === '/editTeam.html') {
+      htmlHandler.getEditTeam(request, response);
+    } else if (parsedUrl.pathname === '/viewTeam.html') {
+      htmlHandler.getViewTeam(request, response);
+    } else if (parsedUrl.pathname === '/viewTeamsList.html') {
+      htmlHandler.getViewTeamList(request, response);
     } else if (parsedUrl.pathname === '/getTeams') {
       jsonHandler.getTeams(request, response);
     } else if (parsedUrl.pathname === '/getTeam') {
