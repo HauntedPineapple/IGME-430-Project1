@@ -15,22 +15,65 @@
         const init = () => {
             let promise = fetch('data/testTeamData.json').then(response => {
                 return response.json();
-            }).then(json => {
-                console.log(json);
-                console.log(json.length);
+            }).then(teamsJSON => {
+                // console.log(teamsJSON);
 
-                for (let i = 0; i < json.length; i++) {
-                    console.log(json[i]);}
-            });
-
-
-            let json=[1,2,3];
-            for(let i = 0;i<6;i++){
-                if(json[i] !== undefined){
-                    console.log("hellpo");                    
+                // add team names to select dropdown
+                let teamSelectDropdown = document.querySelector('#selectTeamToViewDropdown');
+                for (let i = 0; i < teamsJSON.length; i++) {
+                    //console.log(teamsJSON[i]);
+                    let option = document.createElement('option');
+                    option.text = option.value = teamsJSON[i].name;
+                    teamSelectDropdown.appendChild(option);
                 }
-            }
-        }
+
+                // when the selected team is changed, update table
+                let selectedTeam = document.querySelector('#selectedTeamInput');
+                selectedTeam.addEventListener('change', (e) => {
+                    //console.log(selectedTeam.value); //selected team name
+                    // get the data
+                    let currentTeamData = { name: "", pokemon: [], size: 0 };
+                    teamsJSON.forEach(team => {
+                        if (team.name == selectedTeam.value) {
+                            currentTeamData = team;
+                            console.log(currentTeamData);
+                        }
+                    });
+                    let pokemonData = currentTeamData.pokemon;
+                    console.log(pokemonData);
+                    
+                    // set data
+                    document.querySelector('#teamNameHeader').innerText = currentTeamData.name;
+                    let dataRows = document.querySelectorAll('#viewTeamTable .pokemonDataRow')
+                    // console.log(dataRows);
+                    for(let i = 0; i < pokemonData.length; i++){
+                        let currentRow = dataRows[i];
+                        let currentPokemon = pokemonData[i];
+                        let spriteColumn = currentRow.querySelector('.pokemonSprite');
+                        let nameColumn = currentRow.querySelector('.pokemonName');
+                        let typeColumn = currentRow.querySelector('.pokemonType');
+                        let statsColumn = currentRow.querySelector('.pokemonStats');
+                        
+                        spriteColumn.innerHTML = '';
+                        nameColumn.innerHTML=currentPokemon.name;
+
+                        let typeText = `${currentPokemon.types[0]}`;
+                        if(currentPokemon.types.length == 2){
+                            typeText+=`, ${currentPokemon.types[1]}`;
+                        }
+                        typeColumn.innerHTML = typeText;
+
+                        let stats = currentPokemon.baseStats;
+                        let statsText = `<div>HP: ${stats.hp} Speed: ${stats.speed}</div>`;
+                        statsText += `<div>Atk: ${stats.attack} Sp Atk: ${stats.special_attack}</div>`;
+                        statsText += `<div>Def: ${stats.defense} Sp Def: ${stats.special_defense}</div>`;
+                        statsColumn.innerHTML = statsText;
+                        
+                    }
+                });
+
+            });
+        }// end of init
 
         const sendGetFetchRequest = async (url) => {
             let fetchPromise = await fetch(url, { method: 'get', headers: { 'Accept': 'application/json' } });
@@ -72,7 +115,7 @@
                     content.innerHTML += `<p>${obj.message}</p>`;
             }
         }
-        
+
         window.onload = init;
     </script>
 </head>
@@ -87,17 +130,26 @@
             <li><a href="./createTeam.html">Create Team</a></li>
             <li><a href="./viewTeamsList.html">View Teams List</a></li>
             <li><a id="currentPage" href="./viewTeam.html">View Team</a></li>
-            <li><a href="./editTeam.html">Edit Team</a></li>
+            <!-- <li><a href="./editTeam.html">Edit Team</a></li> -->
         </ul>
     </nav>
 
     <main>
         <div class="center">
-            <b>Team Name</b>
+            <label for="selectTeamToViewDropdown">Select Team</label>
+            <form>
+                <input list="selectTeamToViewDropdown" name="selectTeam" id="selectedTeamInput">
+                <datalist name="selectTeam" id="selectTeamToViewDropdown" class="selectTeamDropdown">
+                </datalist>
+            </form>
         </div>
 
-        <div class="center" id="viewTeamTable">
-            <table>
+        <div class="center">
+            <h4 id="teamNameHeader"></h4>
+        </div>
+
+        <div class="center">
+            <table id="viewTeamTable">
                 <tr id="headers">
                     <th></th>
                     <th>Pokemon</th>
@@ -105,42 +157,42 @@
                     <th>Base Stats</th>
                 </tr>
 
-                <tr id="first">
+                <tr id="first" class="pokemonDataRow">
                     <td class="pokemonSprite"></td>
                     <td class="pokemonName"> </td>
                     <td class="pokemonType"></td>
                     <td class="pokemonStats"></td>
                 </tr>
 
-                <tr id="second">
+                <tr id="second" class="pokemonDataRow">
                     <td class="pokemonSprite"></td>
                     <td class="pokemonName"> </td>
                     <td class="pokemonType"></td>
                     <td class="pokemonStats"></td>
                 </tr>
 
-                <tr id="third">
+                <tr id="third" class="pokemonDataRow">
                     <td class="pokemonSprite"></td>
                     <td class="pokemonName"> </td>
                     <td class="pokemonType"></td>
                     <td class="pokemonStats"></td>
                 </tr>
 
-                <tr id="fourth">
+                <tr id="fourth" class="pokemonDataRow">
                     <td class="pokemonSprite"></td>
                     <td class="pokemonName"> </td>
                     <td class="pokemonType"></td>
                     <td class="pokemonStats"></td>
                 </tr>
 
-                <tr id="fifth">
+                <tr id="fifth" class="pokemonDataRow">
                     <td class="pokemonSprite"></td>
                     <td class="pokemonName"> </td>
                     <td class="pokemonType"></td>
                     <td class="pokemonStats"></td>
                 </tr>
 
-                <tr id="sixth">
+                <tr id="sixth" class="pokemonDataRow">
                     <td class="pokemonSprite"></td>
                     <td class="pokemonName"> </td>
                     <td class="pokemonType"></td>
