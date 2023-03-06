@@ -6,9 +6,9 @@ const viewTeamPage = fs.readFileSync(`${__dirname}/../client/viewTeam.html`);
 const viewTeamsListPage = fs.readFileSync(`${__dirname}/../client/viewTeamsList.html`);
 const css = fs.readFileSync(`${__dirname}/../client/styles/main.css`);
 
-const getPage = (request, response) => {
+const getPage = (request, response, page) => {
   response.writeHead(200, { 'Content-Type': 'text/html' });
-  response.write(createTeamPage);
+  response.write(page);
   response.end();
 };
 
