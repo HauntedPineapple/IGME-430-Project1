@@ -16,6 +16,11 @@ h1 {
     "Lucida Grande", "Lucida Sans Unicode", Geneva, Verdana, sans-serif;
 }
 
+h4,
+h5 {
+  margin: 0.25rem;
+}
+
 main {
   margin: 1rem;
   font-family: "Source Sans Pro", "Trebuchet MS", "Lucida Sans Unicode",
@@ -33,16 +38,6 @@ footer {
   grid-template-areas: "one two";
 }
 
-#footerColOne {
-  grid-area: "one";
-  justify-self: start;
-}
-
-#footerColTwo {
-  grid-area: "two";
-  justify-self: end;
-}
-
 a {
   color: #140083;
   text-decoration: none;
@@ -52,6 +47,16 @@ a {
 a:hover {
   color: #1d00be;
   font-weight: bold;
+}
+
+#footerColOne {
+  grid-area: "one";
+  justify-self: start;
+}
+
+#footerColTwo {
+  grid-area: "two";
+  justify-self: end;
 }
 
 .navbar {
@@ -116,10 +121,19 @@ td {
   gap: 5px;
 }
 
-h1,h2,h3,h4,h5{
-    margin: 0.25rem;
+.pokemonStats {
+  font-size: 0.85rem;
 }
 
-.pokemonStats{
-    font-size: 0.85rem;
+.spriteImg {
+  max-width: 100px;
+  width: 100%;
+  height: auto;
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.hidden{
+  display: none;
 }
