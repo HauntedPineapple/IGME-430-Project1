@@ -11,7 +11,7 @@
  * @property {number} id
  * @property {string} name
  * @property {string[]} types
- * @property {BaseStats} baseStatArray
+ * @property {BaseStats} baseStats
  * @property {string} apiURL - PokeAPI url
  * @property {string} spriteURL - sprite url
  * 
