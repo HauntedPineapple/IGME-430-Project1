@@ -1,6 +1,6 @@
 /**
  * @typedef {Object} BaseStats
- * @property {number} hp 
+ * @property {number} hp
  * @property {number} speed
  * @property {number} attack
  * @property {number} special_attack
@@ -14,12 +14,12 @@
  * @property {BaseStats} baseStats
  * @property {string} apiURL - PokeAPI url
  * @property {string} spriteURL - sprite url
- * 
+ *
  * @typedef {Object} TeamObj
  * @property {string} name
  * @property {number} size
  * @property {PokemonObject[]} pokemon
- * 
+ *
  * @typedef {Object} BasicPokemonObject
  * @property {number} id
  * @property {string} name
@@ -45,26 +45,30 @@
 //     size: 0
 // };
 
-//let url = "https://pokeapi.co/api/v2/pokemon/?offset=0&limit=809"; //removes variants
+// let url = "https://pokeapi.co/api/v2/pokemon/?offset=0&limit=809"; //removes variants
 
 /** @param {string} url @param {function} callback */
 function loadJsonFetch(url, callback) {
-    fetch(url)
-        .then(response => {
-            // If the response is successful, return the JSON
-            if (response.ok) {
-                return response.json();
-            }
+  fetch(url)
+    .then((response) => {
+      // If the response is successful, return the JSON
+      if (response.ok) {
+        return response.json();
+      }
 
-            // else throw an error that will be caught below
-            return response.text().then(text => {
-                throw text;
-            });
-        }) // send the response.json() promise to the next .then()
-        .then(json => { // the second promise is resolved, and `json` is a JSON object
-            callback(json);
-        }).catch(error => {
-            // error
-            console.log(error);
-        });
+      // else throw an error that will be caught below
+      return response.text().then((text) => {
+        throw text;
+      });
+    }) // send the response.json() promise to the next .then()
+    .then((json) => { // the second promise is resolved, and `json` is a JSON object
+      callback(json);
+    }).catch((error) => {
+      // error
+      console.log(error);
+    });
 }
+
+module.exports = {
+  loadJsonFetch,
+};

@@ -16,5 +16,5 @@ const getTestTeamData = (request, response) => {
 
 module.exports = {
   getBasicData,
-  getTestTeamData
+  getTestTeamData,
 };

@@ -1,4 +1,3 @@
-
 const http = require('http'); // pull in the http server module
 const url = require('url'); // pull in the url module
 // const query = require('querystring');
@@ -30,7 +29,7 @@ const parseBody = (request, response, handler) => {
     body.push(chunk);
   });
 
-  // Turn the body array into a single entity using Buffer.concat, 
+  // Turn the body array into a single entity using Buffer.concat,
   // then turn that into a string, then parse it as JSON
   request.on('end', () => {
     const bodyString = Buffer.concat(body).toString();
