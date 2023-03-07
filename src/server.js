@@ -66,8 +66,8 @@ const handleGet = (request, response, parsedUrl) => {
     htmlHandler.getViewTeamList(request, response);
   } else if (parsedUrl.pathname === '/getTeams') {
     jsonHandler.getTeams(request, response);
-  } else if (parsedUrl.pathname === '/getTeam') {
-    jsonHandler.getTeam(request, response);
+  // } else if (parsedUrl.pathname === '/getTeam') {
+  //   jsonHandler.getTeam(request, response);
   } else if (parsedUrl.pathname === '/data/pokemon-basic-data.json') {
     responseHandler.getBasicData(request, response);
   } else if (parsedUrl.pathname === '/data/testTeamData.json') {
