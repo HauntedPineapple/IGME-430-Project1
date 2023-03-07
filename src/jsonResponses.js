@@ -53,10 +53,10 @@ const addTeam = (request, response, body) => {
     // if response is created, then set our created message
     // and sent response with a message
     if (responseCode === 201) {
-        responseJSON.message = `"${body.name}" Created Successfully`;
+        responseJSON.message = `Team "${body.name}" Created Successfully`;
     }
     else{
-        responseJSON.message = `"${body.name}" Updated Successfully`;
+        responseJSON.message = `Team "${body.name}" Updated Successfully`;
     }
     
     return respondJSON(request, response, responseCode, responseJSON);

@@ -13,10 +13,13 @@
 
     <script>
         const init = () => {
-            let promise = fetch('data/testTeamData.json').then(response => {
+            // let promise = fetch('data/testTeamData.json').then(response => {
+            let promise = fetch('/getTeams').then(response => {
                 return response.json();
-            }).then(teamsJSON => {
-                // console.log(teamsJSON);
+            }).then(json => {
+                let teamsJSON = Object.values(json.teams);
+                console.log(json);
+                console.log(teamsJSON);
 
                 // add team names to select dropdown
                 let teamSelectDropdown = document.querySelector('#selectTeamToViewDropdown');
@@ -196,7 +199,6 @@
         </div>
 
         <div id="responseOutput">
-            <h4>Response Output</h4>
             <section id="#content"></section>
         </div>
     </main>
@@ -207,7 +209,7 @@
             <!-- <a href="https://people.rit.edu/aam6039/430/">IGME-430</a> -->
         </div>
         <div id="footerColTwo">
-            <a href="https://www.linkedin.com/in/audrey-main/">© Audrey Main</a>
+            <a href="https://www.linkedin.com/in/audrey-main/">Audrey Main</a>
         </div>
     </footer>
 </body>

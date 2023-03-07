@@ -78,18 +78,13 @@
                         console.log(teamData);
                     });
                 });
-
-
-                document.querySelector('#getTeamsButton').addEventListener("click", (e) => {
-                });
-
-
             }); // end of init()
         }
 
         const setTeamData = (teamname, chosenPokemon) => {
+            teamData = { name: "", pokemon: [], size: 0 }; // reset values
             teamData.name = teamname;
-            teamData.size = chosenPokemon.size;
+            teamData.size = chosenPokemon.length;
             let promises = [];
 
             chosenPokemon.forEach(pokemon => {
@@ -304,13 +299,11 @@
 
             <div class="center">
                 <button id="createTeamButton">Create Team!</button>
-                <button id="getTeamsButton">Get Teams</button>
             </div>
         </div>
 
-        <div id="responseOutput">
-            <h4>Response Output</h4>
-            <section id="#content"></section>
+        <div class="center" id="responseOutput">
+            <section id="content"></section>
         </div>
     </main>
 

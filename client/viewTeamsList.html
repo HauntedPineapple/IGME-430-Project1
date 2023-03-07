@@ -13,17 +13,19 @@
 
     <script>
         const init = () => {
-            let promise = fetch('data/testTeamData.json').then(response => {
+            // let promise = fetch('data/testTeamData.json').then(response => {
+            let promise = fetch('/getTeams').then(response => {
                 return response.json();
             }).then(json => {
+                let teamsJSON = Object.values(json.teams);
                 console.log(json);
-                console.log(json.length);
+                console.log(teamsJSON);
 
-                for (let i = 0; i < json.length; i++) {
-                    console.log(json[i]);
+                for (let i = 0; i < teamsJSON.length; i++) {
+                    console.log(teamsJSON[i]);
                     let row = document.createElement('tr');
-                    let nameHTML = `<td class="teamListEntryName">${json[i].name}</td>`;
-                    let sizeHTML = `<td class="teamListEntrySize">${json[i].size}</td>`;
+                    let nameHTML = `<td class="teamListEntryName">${teamsJSON[i].name}</td>`;
+                    let sizeHTML = `<td class="teamListEntrySize">${teamsJSON[i].size}</td>`;
 
                     row.innerHTML = nameHTML + sizeHTML;
 
@@ -103,7 +105,6 @@
         </div>
 
         <div id="responseOutput">
-            <h4>Response Output</h4>
             <section id="#content"></section>
         </div>
     </main>
@@ -114,7 +115,7 @@
             <!-- <a href="https://people.rit.edu/aam6039/430/">IGME-430</a> -->
         </div>
         <div id="footerColTwo">
-            <a href="https://www.linkedin.com/in/audrey-main/">© Audrey Main</a>
+            <a href="https://www.linkedin.com/in/audrey-main/">Audrey Main</a>
         </div>
     </footer>
 </body>
