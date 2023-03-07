@@ -50,7 +50,11 @@ const handlePost = (request, response, parsedUrl) => {
 // handle GET requests
 const handleGet = (request, response, parsedUrl) => {
   // route to correct method based on url
-  if (parsedUrl.pathname === '/styles/main.css') {
+  if (parsedUrl.pathname === '/assets/favicon-16x16.png') {
+    htmlHandler.getFavicon16(request, response);
+  } else if (parsedUrl.pathname === '/assets/favicon-32x32.png') {
+    htmlHandler.getFavicon32(request, response);
+  } else if (parsedUrl.pathname === '/styles/main.css') {
     htmlHandler.getCSS(request, response);
   } else if (parsedUrl.pathname === '/createTeam.html') {
     htmlHandler.getIndex(request, response);
